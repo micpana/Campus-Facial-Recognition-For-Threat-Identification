@@ -48,3 +48,8 @@ Thumbs.db
 *.mov
 *.wmv
 
+# local server images
+server/*.jpg
+server/*.png
+server/*.webp
+server/*.jpeg
