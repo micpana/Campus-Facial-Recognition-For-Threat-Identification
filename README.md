@@ -1,187 +1,213 @@
-Facial and Human Behaviour Recognition System
+# Facial and Human Behaviour Recognition System
 
-This project is a comprehensive system designed for facial recognition and human behavior analysis, leveraging real-time video feeds from IP cameras. The backend is built with Flask and MongoEngine for data persistence, while the facial recognition capabilities are powered by the face_recognition library. The system also integrates with Telegram for real-time alerts on detected threats.
+This project is a comprehensive system designed for **facial recognition** and **human behavior analysis**, leveraging **real-time video feeds from IP cameras**. The backend is built with **Flask** and **MongoEngine** for data persistence, while facial recognition capabilities are powered by the `face_recognition` library. The system also integrates with **Telegram** for real-time alerts on detected threats.
 
-Note: The behavior analysis component of this system is currently under development and not yet implemented.
-🌟 Features
+> ⚠️ **Note:** The behavior analysis component is currently under development and **not yet implemented**.
 
-    User Authentication: Secure signup and sign-in with password encryption.
+---
 
-    Access Token Management: Generates and manages access tokens for authenticated user sessions.
+## 🌟 Features
 
-    Individual Management: Add, view, and manage individuals, including their facial images and threat levels.
+- **User Authentication**  
+  Secure signup and sign-in with password encryption.
 
-    Camera Management: Register and manage IP cameras by providing their names, IP addresses, usernames, and passwords.
+- **Access Token Management**  
+  Generates and manages access tokens for authenticated user sessions.
 
-    Real-time Facial Recognition: Continuously processes video streams from registered cameras to identify known individuals.
+- **Individual Management**  
+  Add, view, and manage individuals, including their facial images and threat levels.
 
-    Threat Level Detection: Identifies individuals based on their registered threat level.
+- **Camera Management**  
+  Register and manage IP cameras by providing their names, IP addresses, usernames, and passwords.
 
-    Telegram Notifications: Sends instant alerts to a configured Telegram chat when a high-threat individual is detected.
+- **Real-time Facial Recognition**  
+  Continuously processes video streams from registered cameras to identify known individuals.
 
-    Media Serving: Serves static media files (e.g., individual images).
+- **Threat Level Detection**  
+  Identifies individuals based on their registered threat level.
 
-🛠️ Technologies Used
-Backend (located in the backend folder)
+- **Telegram Notifications**  
+  Sends instant alerts to a configured Telegram chat when a high-threat individual is detected.
 
-    Python 3.7.3: The core programming language.
+- **Media Serving**  
+  Serves static media files (e.g., individual images).
 
-    Flask: A micro web framework for Python, used for building the API.
+---
 
-    MongoEngine: An Object-Document Mapper (ODM) for working with MongoDB.
+## 🛠️ Technologies Used
 
-    MongoDB Community: A NoSQL database for storing application data.
+### 🔹 Backend (`backend/` folder)
 
-    face_recognition: A powerful Python library for face recognition tasks.
+- **Python 3.7.3**
+- **Flask** – Micro web framework
+- **MongoEngine** – ODM for MongoDB
+- **MongoDB Community Edition** – NoSQL database
+- **face_recognition** – Facial recognition
+- **OpenCV (`cv2`)** – Video stream processing
+- **NumPy** – Numerical operations
+- **Passlib** – Secure password hashing
+- **Requests** – For Telegram API communication
+- **Werkzeug** – WSGI utility library
+- **Pandas** – Data manipulation (minimally used)
+- **Waitress** – Production WSGI server (optional)
 
-    OpenCV (cv2): Used for video stream processing.
+### 🔹 Frontend (`client/` folder)
 
-    NumPy: Essential for numerical operations, especially with image data.
+- **Node.js** (with npm)  
+  A Node.js-based frontend is assumed (e.g., React, Angular, or Vue), typically served from `http://localhost:3000`.
 
-    Passlib: For secure password hashing and verification.
+---
 
-    Requests: For making HTTP requests (e.g., to the Telegram API).
+## 🚀 Getting Started
 
-    Werkzeug: A comprehensive WSGI utility library for Python.
+### ✅ Prerequisites
 
-    Pandas: For data manipulation and analysis (though its direct use in the provided app.py is minimal, it's listed in requirements.txt).
+Ensure the following are installed:
 
-    Waitress: A production-quality pure-Python WSGI server (optional, for deployment).
+- **Python 3.7.3** (add to system path during installation)
+- **Node.js** (includes npm)
+- **MongoDB Community Edition**
+- **MongoDB Compass** (GUI)
+- **Git**
+- **VS Code** (or your preferred code editor)
 
-Frontend (located in the client folder)
+---
 
-    Node.js: Includes npm, required for frontend dependencies.
+### 📦 Installation
 
-    It's assumed a Node.js based frontend (likely React, Angular, or Vue) is part of this project, running on localhost:3000.
+#### 1. Clone the Repository
 
-🚀 Getting Started
-Prerequisites
-
-Ensure you have the following tools installed on your machine:
-
-    Python 3.7.3: During installation, make sure the "Add to path variables" checkbox is ticked.
-
-    Node.js: Includes npm, required for frontend dependencies.
-
-    MongoDB Community: The database server.
-
-    MongoDB Compass: A GUI for MongoDB, useful for managing your database.
-
-    Git: For version control.
-
-    VS Code: A recommended code editor.
-
-Installation
-1. Clone the Repository
-
+```bash
 git clone <repository_url>
 cd <project_root_folder>
+```
 
-2. Install Backend Dependencies
+#### 2. Install Backend Dependencies
 
-Navigate to the backend folder in your terminal and run the following command to install the Python dependencies:
-
+```bash
 cd backend
 pip install -r requirements.txt
+```
 
-Note: This process requires a working internet connection and a proper Python installation.
-3. Install Frontend Dependencies (if applicable)
+> ℹ️ Ensure a working internet connection and proper Python setup.
 
-If your project includes a frontend, navigate to the client folder in your terminal and install its dependencies:
+#### 3. Install Frontend Dependencies (if applicable)
 
+```bash
 cd client
 npm install
+```
 
-Note: This process requires a working internet connection and Node.js installed.
-Running the Application
-1. Start MongoDB
+---
 
-Ensure your MongoDB Community server is running. You can typically start it from your system's services or by running mongod in your terminal.
-2. Start the Backend Server
+### ▶️ Running the Application
 
-From the backend folder, run the app.py file:
+#### 1. Start MongoDB
 
+Ensure MongoDB server is running (via Services or `mongod` in terminal).
+
+#### 2. Start Backend Server
+
+```bash
 cd backend
 python app.py
+```
 
-The backend server will typically run on http://0.0.0.0:5000 (or localhost:5000).
+Runs at `http://localhost:5000`.
 
-Note: This will only work if the backend's dependencies and MongoDB were installed successfully.
-3. Start the Facial Recognition Process
+#### 3. Start Facial Recognition Process
 
-In a separate terminal, from the backend folder, run the facial_recognition.py script:
-
+```bash
 cd backend
 python facial_recognition.py
+```
 
-This script will continuously monitor the registered cameras and perform facial recognition.
-4. Start the Telegram Updates Listener
+Monitors registered cameras and performs facial recognition.
 
-In another separate terminal, from the backend folder, run the telegram_updates.py script:
+#### 4. Start Telegram Updates Listener
 
+```bash
 cd backend
 python telegram_updates.py
+```
 
-This script will listen for incoming messages on your configured Telegram bot and process them (e.g., linking user accounts).
-5. Start the Frontend Server (if applicable)
+Handles incoming Telegram bot messages (e.g., user account linking).
 
-If your project includes a frontend, navigate to the client folder in your terminal and start the development server:
+#### 5. Start Frontend Server (if applicable)
 
+```bash
 cd client
 npm start
+```
 
-When the server is up and running, you should be able to access it in your browser, usually at http://localhost:3000 or http://localhost:3001 if port 3000 is taken.
+Opens at `http://localhost:3000` or `http://localhost:3001`.
 
-Note: This will only work if the frontend's dependencies were installed successfully. Ensure the backend server is running to use the frontend functions.
-⚙️ Configuration
-Database Connection
+> Make sure the backend is running before using frontend features.
 
-The MongoDB connection is configured in backend/database.py:
+---
 
+## ⚙️ Configuration
+
+### MongoDB Connection
+
+Located in `backend/database.py`:
+
+```python
 connect('facial-and-human-behaviour-recognition', host='localhost', port=27017, alias='default')
+```
 
-You can modify host and port if your MongoDB instance is running elsewhere.
-Telegram Bot Token
+Modify `host` and `port` as needed.
 
-The Telegram bot token is configured in backend/telegram_messages.py:
+### Telegram Bot Token
 
-token = 'YOUR_TELEGRAM_BOT_TOKEN_HERE' # Replace with your actual token
+Located in `backend/telegram_messages.py`:
 
-Replace '1788963824:AAHM2vdZCpLQ5mqEmLXHj22jovo7SM1Vukg' with your actual Telegram bot token. You can obtain a bot token by talking to BotFather on Telegram.
-Frontend URL
+```python
+token = 'YOUR_TELEGRAM_BOT_TOKEN_HERE'
+```
 
-The frontend URL is specified in backend/app.py for CORS configuration:
+Replace with your actual token from [BotFather](https://t.me/botfather) on Telegram.
 
-frontend_url = 'http://localhost:3000' # development server
+### Frontend URL (for CORS)
 
-Adjust this if your frontend is hosted on a different URL or port.
-📂 Project Structure
+Located in `backend/app.py`:
 
-    backend/: Contains all backend Python code.
+```python
+frontend_url = 'http://localhost:3000'
+```
 
-        app.py: The main Flask application, defining API routes for user management, individual management, camera management, and media serving.
+Change if your frontend is hosted elsewhere.
 
-        database.py: Handles the MongoDB connection and database initialization.
+---
 
-        encrypt.py: Provides functions for password encryption and verification using passlib.
+## 📂 Project Structure
 
-        facial_recognition.py: Contains the core logic for real-time facial recognition using face_recognition and OpenCV, processing camera feeds and sending alerts.
+```
+facial-behavior-recognition/
+│
+├── backend/
+│   ├── app.py                  # Main Flask app
+│   ├── database.py             # MongoDB connection
+│   ├── encrypt.py              # Password hashing functions
+│   ├── facial_recognition.py   # Core real-time recognition logic
+│   ├── models.py               # MongoEngine models
+│   ├── requirements.txt        # Python dependencies
+│   ├── telegram_messages.py    # Telegram messaging functions
+│   ├── telegram_updates.py     # Telegram bot update listener
+│   └── images/                 # Facial images (optional directory)
+│
+├── client/                     # Frontend code (assumed React/Vue/Angular)
+```
 
-        models.py: Defines the MongoDB document schemas for User, AccessTokens, Individuals, and Cameras using MongoEngine.
+---
 
-        requirements.txt: Lists all Python dependencies required for the backend.
+## 🤝 Contributing
 
-        telegram_messages.py: Contains functions for sending messages and getting updates from the Telegram Bot API.
+Contributions are welcome!  
+Feel free to **fork the repository**, make your changes, and **submit a pull request**.
 
-        telegram_updates.py: A script that continuously checks for new messages from the Telegram bot and processes them, primarily for linking user accounts.
+---
 
-        images/: (Implicit) A directory where individual facial images are stored.
+## 📄 License
 
-    client/: (Assumed) Contains all frontend code.
-
-🤝 Contributing
-
-Contributions are welcome! Please feel free to fork the repository, make your changes, and submit a pull request.
-📄 License
-
-This project is licensed under the MIT License.
+This project is licensed under the **MIT License**.
